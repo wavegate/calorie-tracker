@@ -72,7 +72,7 @@ hr {
 
 .entry {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 8px;
 }
 
@@ -89,6 +89,10 @@ hr {
   display: flex;
   padding: 8px;
   border-radius: 6px;
+}
+
+#zero {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

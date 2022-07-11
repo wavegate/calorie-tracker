@@ -1,4 +1,4 @@
-const entries = [];
+let entries = [];
 
 class Entry {
   constructor(time, name, calories) {
@@ -8,17 +8,27 @@ class Entry {
   }
 }
 
+entries.push(new Entry(new Date(), "Salami", 300));
+entries.push(new Entry(new Date(), "Beef", 200));
+entries.push(new Entry(new Date(), "Chicken", 100));
+entries.push(new Entry(new Date(), "Egg", 800));
+
 const submitButton = document.getElementsByClassName("submitButton")[0];
 const objectName = document.getElementById("objectName");
 const calories = document.getElementById("calories");
 const entryList = document.getElementsByClassName("entryList")[0];
 const entryListContents = entryList.innerHTML;
 const entryForm = document.getElementsByClassName("entryForm")[0];
+const entryFormContents = entryForm.innerHTML;
 const caloriesLeft = document.getElementById("caloriesLeft");
+const zero = document.getElementById("zero");
 
 function updateEntries() {
   entryList.innerHTML = entryListContents;
   let totalCalories = 0;
+  for (let i = 0; i < entries.length; i++) {
+    entries[i].id = i;
+  }
   for (entry of entries) {
     const listItem = document.createElement("li");
     listItem.classList.add("entry");
@@ -33,9 +43,21 @@ function updateEntries() {
     time.classList.add("entryPart");
     name.classList.add("entryPart");
     cal.classList.add("entryPart");
+    const del = document.createElement("i");
+    del.classList.add("fa-solid");
+    del.classList.add("fa-circle-xmark");
+    del.classList.add("entryPart");
+    del.id = "delete" + entry.id;
+    del.addEventListener("click", (event) => {
+      const pattern = /delete(.*)/;
+      const match = event.target.id.match(pattern)[1];
+      entries = entries.filter((entry) => entry.id != match);
+      updateEntries();
+    });
     listItem.appendChild(time);
     listItem.appendChild(name);
     listItem.appendChild(cal);
+    listItem.appendChild(del);
     entryList.appendChild(listItem);
     totalCalories += parseInt(entry.calories);
   }
@@ -47,4 +69,7 @@ entryForm.addEventListener("submit", (event) => {
   const newEntry = new Entry(new Date(), objectName.value, calories.value);
   entries.push(newEntry);
   updateEntries();
+  entryForm.innerHTML = entryFormContents;
 });
+
+updateEntries();

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calorie Tracker</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <main>
@@ -17,21 +18,22 @@
       <form action="" class="entryForm">
         <div class="formGroup">
           <label for="objectName" class="formLabel">Object name:</label>
-          <input type="text" id="objectName" class="formInput" />
+          <input type="text" id="objectName" class="formInput" required />
         </div>
         <div class="formGroup">
           <label for="calories" class="formLabel">Calories:</label>
-          <input id="calories" type="number" class="formInput" />
+          <input id="calories" type="number" class="formInput" required />
         </div>
-        <button class="submitButton">Add object</button>
+        <button class="submitButton">Add entry</button>
       </form>
       <hr />
       <ol class="entryList">
-        <li class="entry">
+        <!-- <li class="entry">
           <div class="entryPart">7:58 AM</div>
           <div class="entryPart">Slice of banana</div>
           <div class="entryPart">200 kcal</div>
-        </li>
+          <div class="entryPart">Delete</div>
+        </li> -->
       </ol>
     </main>
     <script src="script.js"></script>
