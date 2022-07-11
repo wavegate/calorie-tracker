@@ -76,14 +76,16 @@ function saveToStorage() {
 
 function retrieveFromStorage() {
   entries = [];
-  retrievedData = JSON.parse(localStorage.getItem("data"));
-  for (datapoint of retrievedData) {
-    const newEntry = new Entry(
-      new Date(datapoint.time),
-      datapoint.name,
-      datapoint.calories
-    );
-    entries.push(newEntry);
+  if ("data" in localStorage) {
+    retrievedData = JSON.parse(localStorage.getItem("data"));
+    for (datapoint of retrievedData) {
+      const newEntry = new Entry(
+        new Date(datapoint.time),
+        datapoint.name,
+        datapoint.calories
+      );
+      entries.push(newEntry);
+    }
   }
 }
 

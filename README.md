@@ -17,6 +17,8 @@ This is a web page that tracks calories consumed.
 
 ## Overview
 
+View demo: [https://wavegate-calorie-tracker.netlify.app/][https://wavegate-calorie-tracker.netlify.app/]
+
 ### The challenge
 
 ### Screenshot
