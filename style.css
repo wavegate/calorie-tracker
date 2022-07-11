@@ -91,7 +91,7 @@ hr {
   border-radius: 6px;
 }
 
-#zero {
+.fa-circle-xmark {
   cursor: pointer;
 }
 

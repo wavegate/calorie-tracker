@@ -51,7 +51,11 @@ function updateEntries() {
     del.addEventListener("click", (event) => {
       const pattern = /delete(.*)/;
       const match = event.target.id.match(pattern)[1];
-      entries = entries.filter((entry) => entry.id != match);
+      for (let x = 0; x < entries.length; x++) {
+        if (entries[x].id == match) {
+          entries.splice(x, 1);
+        }
+      }
       updateEntries();
     });
     listItem.appendChild(time);
@@ -62,14 +66,35 @@ function updateEntries() {
     totalCalories += parseInt(entry.calories);
   }
   caloriesLeft.innerHTML = 2000 - totalCalories;
+  saveToStorage();
 }
+
+function saveToStorage() {
+  const entriesCopy = JSON.stringify(entries);
+  localStorage.setItem("data", entriesCopy);
+}
+
+function retrieveFromStorage() {
+  entries = [];
+  retrievedData = JSON.parse(localStorage.getItem("data"));
+  for (datapoint of retrievedData) {
+    const newEntry = new Entry(
+      new Date(datapoint.time),
+      datapoint.name,
+      datapoint.calories
+    );
+    entries.push(newEntry);
+  }
+}
+
+retrieveFromStorage();
+
+updateEntries();
 
 entryForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const newEntry = new Entry(new Date(), objectName.value, calories.value);
   entries.push(newEntry);
   updateEntries();
-  entryForm.innerHTML = entryFormContents;
+  entryForm.reset();
 });
-
-updateEntries();
