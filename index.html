@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Calorie Tracker</h1>
+      <h2>
+        Calories left:
+        <span id="caloriesLeft">2000</sp>
+      </h2>
+      <form action="" class="entryForm">
+        <div class="formGroup">
+          <label for="objectName" class="formLabel">Object name:</label>
+          <input type="text" id="objectName" class="formInput" />
+        </div>
+        <div class="formGroup">
+          <label for="calories" class="formLabel">Calories:</label>
+          <input id="calories" type="number" class="formInput" />
+        </div>
+        <button class="submitButton">Add object</button>
+      </form>
+      <hr />
+      <ol class="entryList">
+        <li class="entry">
+          <div class="entryPart">7:58 AM</div>
+          <div class="entryPart">Slice of banana</div>
+          <div class="entryPart">200 kcal</div>
+        </li>
+      </ol>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
